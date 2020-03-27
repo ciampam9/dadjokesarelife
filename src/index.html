@@ -7,12 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dad Jokes Are Life</title>
 
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64703882-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-64703882-1');
+    </script>
+
+
     <script type="text/javascript">
       window.addEventListener('DOMContentLoaded', function (event) {
         const headers = new Headers({
           "Accept": "application/json"
         });
-        fetch("https://icanhazdadjoke.com/", { headers }).then(function (response) {
+        fetch('https://icanhazdadjoke.com/', { headers }).then(function (response) {
           return response.json();
         }).then(function (json) {
           document.querySelector('.dad-joke').innerText = json.joke;
