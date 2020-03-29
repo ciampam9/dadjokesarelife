@@ -32,7 +32,7 @@
         response.json()
       )).then(({ joke }) => {
         // elem.classList.remove('dad-hoke__title--loading');
-        elem.innerHTML = joke;
+        elem.innerHTML = `<span>${joke}</span>`;
       });
     });
   </script>
