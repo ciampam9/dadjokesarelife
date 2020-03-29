@@ -366,7 +366,7 @@ body {
 }
 
 .dad-joke__title {
-
+  white-space: pre-line;
 }
 
 .dad-joke__title > span:not(.loading) {
