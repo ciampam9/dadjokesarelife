@@ -24,15 +24,34 @@
   <script type="text/javascript">
     window.addEventListener('DOMContentLoaded', function () {
       const elem = document.querySelector('#dad-joke');
+      let isLoading = true;
 
       const headers = new Headers({
         "Accept": "application/json"
       });
-      fetch('https://icanhazdadjoke.com/', { headers }).then(response => (
-        response.json()
-      )).then(({ joke }) => {
-        // elem.classList.remove('dad-hoke__title--loading');
-        elem.innerHTML = `<span>${joke}</span>`;
+
+      function writeOnScreen(text) {
+        elem.innerHTML = `<span>${text}</span>`;
+      }
+
+      function fetchJoke() {
+        isLoading = true;
+        writeOnScreen('Loading...');
+
+        fetch('https://icanhazdadjoke.com/', { headers })
+        .then(res => res.json())
+        .then(({ joke }) => {
+          writeOnScreen(joke);
+          isLoading = false;
+        });
+      }
+
+      fetchJoke();
+
+      window.addEventListener('keypress', event => {
+        if (event.keyCode === 13 && !isLoading) { // Enter key
+          fetchJoke();
+        }
       });
     });
   </script>
@@ -41,7 +60,7 @@
   <div class="container">
     <div class="dad-joke">
       <h1 class="dad-joke__title" id="dad-joke">
-        loading...
+        Loading...
       </h1>
     </div>
   </div>
