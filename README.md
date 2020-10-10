@@ -1,2 +1,2 @@
 # dadjokesarelife
-http://dadjokesare.life
+https://dadjokesare.life
